@@ -14,6 +14,11 @@ public class CourierCredentials {
     }
 
     // Геттеры и сеттеры
-    public String getLogin() { return login; }
-    public String getPassword() { return password; }
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

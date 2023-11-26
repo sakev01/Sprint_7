@@ -11,14 +11,14 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 
-
 public class CreateCourierBeginnerTest {
-@Before
-    public void setUp(){
+    @Before
+    public void setUp() {
         RestAssured.baseURI = "http://qa-scooter.praktikum-services.ru/";
     }
+
     @Test
-    public void CourierCanBeCreated(){
+    public void CourierCanBeCreated() {
         //create test data
         File json = new File("src/test/resources/courier.json");
         //call method

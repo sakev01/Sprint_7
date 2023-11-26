@@ -14,9 +14,7 @@ public class OrderData {
     private String comment;
     private List<String> color;
 
-    public OrderData(String firstName, String lastName, String address,
-                     int metroStation, String phone, int rentTime,
-                     String deliveryDate, String comment, List<String> color){
+    public OrderData(String firstName, String lastName, String address, int metroStation, String phone, int rentTime, String deliveryDate, String comment, List<String> color) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -28,9 +26,11 @@ public class OrderData {
         this.color = color;
 
     }
-    public OrderData(){
+
+    public OrderData() {
 
     }
+
     public String getFirstName() {
         return firstName;
     }

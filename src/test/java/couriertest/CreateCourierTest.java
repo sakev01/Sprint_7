@@ -3,14 +3,16 @@ package couriertest;
 import client.CourierClient;
 import data.CourierCredentials;
 import data.CourierData;
-import data.CourierGenerator;
+import data.courierGenerator;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
+import org.apache.http.HttpStatus;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import org.apache.http.HttpStatus;
 
 public class CreateCourierTest {
     private CourierClient courierClient;
@@ -22,8 +24,9 @@ public class CreateCourierTest {
         //создаем тестовые данные
         courierClient = new CourierClient();
         //courier = new CourierData("login789999tr", "password", "login78");
-        courier = CourierGenerator.getRandomCourier();
+        courier = courierGenerator.getRandomCourier();
     }
+
     @After
     public void cleanUp() {
         //написать проверку: если курьер создан -- удаляем
@@ -31,7 +34,9 @@ public class CreateCourierTest {
             courierClient.deleteCourier(courierId);
         }
     }
+
     @Test
+    @DisplayName("Courier logged in")
     public void courierCanBeCreatedAndLoggedIn() {
         // Courier - Создание курьера
         ValidatableResponse createResponse = courierClient.createCourier(courier);
@@ -49,7 +54,9 @@ public class CreateCourierTest {
                 .statusCode(HttpStatus.SC_OK)
                 .body("id", notNullValue());
     }
+
     @Test
+    @DisplayName("Creation duplicate courier")
     public void cannotCreateDuplicateCourier() {
         // Создаем курьера
         ValidatableResponse createResponse = courierClient.createCourier(courier);
@@ -63,7 +70,9 @@ public class CreateCourierTest {
                 .statusCode(HttpStatus.SC_CONFLICT)
                 .body("message", is("Этот логин уже используется"));
     }
+
     @Test
+    @DisplayName("Create courier without login or password")
     public void cannotCreateCourierWithoutLoginOrPassword() {
         // курьера без логина
         CourierData courierWithoutLogin = new CourierData(null, "password", "Name");

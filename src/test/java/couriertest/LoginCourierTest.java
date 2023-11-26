@@ -3,12 +3,13 @@ package couriertest;
 import client.CourierClient;
 import data.CourierCredentials;
 import data.CourierData;
-import data.CourierGenerator;
+import data.courierGenerator;
 import io.restassured.response.ValidatableResponse;
 import org.apache.http.HttpStatus;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
@@ -20,7 +21,7 @@ public class LoginCourierTest {
     @Before
     public void setUp() {
         courierClient = new CourierClient();
-        courier = CourierGenerator.getRandomCourier();
+        courier = courierGenerator.getRandomCourier();
         ValidatableResponse createResponse = courierClient.createCourier(courier);
         if (createResponse.extract().statusCode() == HttpStatus.SC_OK) {
             courierId = createResponse.extract().path("id");
