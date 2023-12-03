@@ -3,16 +3,17 @@ package couriertest;
 import client.CourierClient;
 import data.CourierCredentials;
 import data.CourierData;
-import data.courierGenerator;
+import data.CourierGenerator;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
-import org.apache.http.HttpStatus;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
+
+import org.apache.http.HttpStatus;
 
 public class CreateCourierTest {
     private CourierClient courierClient;
@@ -24,7 +25,7 @@ public class CreateCourierTest {
         //создаем тестовые данные
         courierClient = new CourierClient();
         //courier = new CourierData("login789999tr", "password", "login78");
-        courier = courierGenerator.getRandomCourier();
+        courier = CourierGenerator.getRandomCourier();
     }
 
     @After

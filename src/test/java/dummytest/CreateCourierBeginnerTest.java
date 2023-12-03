@@ -18,7 +18,7 @@ public class CreateCourierBeginnerTest {
     }
 
     @Test
-    public void CourierCanBeCreated() {
+    public void courierCanBeCreated() {
         //create test data
         File json = new File("src/test/resources/courier.json");
         //call method

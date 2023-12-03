@@ -2,9 +2,9 @@ package ordertest;
 
 import client.OrderClient;
 import io.restassured.response.ValidatableResponse;
-import org.apache.http.HttpStatus;
 import org.junit.Before;
 import org.junit.Test;
+import org.apache.http.HttpStatus;
 
 import java.util.HashMap;
 import java.util.Map;

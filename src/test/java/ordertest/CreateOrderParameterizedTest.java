@@ -3,11 +3,11 @@ package ordertest;
 import client.OrderClient;
 import data.OrderData;
 import io.restassured.response.ValidatableResponse;
-import org.apache.http.HttpStatus;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.apache.http.HttpStatus;
 
 import java.util.Arrays;
 import java.util.Collection;
