@@ -22,10 +22,7 @@ public class CreateCourierTest {
 
     @Before
     public void setUp() {
-        //создаем тестовые данные
-        courierClient = new CourierClient();
-        //courier = new CourierData("login789999tr", "password", "login78");
-        courier = CourierGenerator.getRandomCourier();
+      courierClient = new CourierClient();
     }
 
     @After
@@ -40,6 +37,8 @@ public class CreateCourierTest {
     @DisplayName("Courier logged in")
     public void courierCanBeCreatedAndLoggedIn() {
         // Courier - Создание курьера
+        courier = CourierGenerator.getRandomCourier();
+
         ValidatableResponse createResponse = courierClient.createCourier(courier);
         createResponse.assertThat()
                 .statusCode(HttpStatus.SC_CREATED)
@@ -60,6 +59,8 @@ public class CreateCourierTest {
     @DisplayName("Creation duplicate courier")
     public void cannotCreateDuplicateCourier() {
         // Создаем курьера
+        courier = CourierGenerator.getRandomCourier();
+
         ValidatableResponse createResponse = courierClient.createCourier(courier);
         createResponse.assertThat()
                 .statusCode(HttpStatus.SC_CREATED)
@@ -69,12 +70,13 @@ public class CreateCourierTest {
         ValidatableResponse duplicateCreateResponse = courierClient.createCourier(courier);
         duplicateCreateResponse.assertThat()
                 .statusCode(HttpStatus.SC_CONFLICT)
-                .body("message", is("Этот логин уже используется"));
+                .body("message", is("Этот логин уже используется. Попробуйте другой."));
     }
 
     @Test
     @DisplayName("Create courier without login or password")
     public void cannotCreateCourierWithoutLoginOrPassword() {
+
         // курьера без логина
         CourierData courierWithoutLogin = new CourierData(null, "password", "Name");
 

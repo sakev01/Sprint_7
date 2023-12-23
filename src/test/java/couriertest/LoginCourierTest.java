@@ -3,7 +3,7 @@ package couriertest;
 import client.CourierClient;
 import data.CourierCredentials;
 import data.CourierData;
-import data.courierGenerator;
+import data.CourierGenerator;
 import io.restassured.response.ValidatableResponse;
 import org.apache.http.HttpStatus;
 import org.junit.After;
@@ -21,7 +21,7 @@ public class LoginCourierTest {
     @Before
     public void setUp() {
         courierClient = new CourierClient();
-        courier = courierGenerator.getRandomCourier();
+        courier = CourierGenerator.getRandomCourier();
         ValidatableResponse createResponse = courierClient.createCourier(courier);
         if (createResponse.extract().statusCode() == HttpStatus.SC_OK) {
             courierId = createResponse.extract().path("id");
